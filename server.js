@@ -14,7 +14,7 @@ import asyncHandler from "express-async-handler";
 import Feedback from "./models/feedback.js";
 dotenv.config();
 import cors from 'cors'
-
+const port = process.env.PORT || 5000;
 connectDB();
 
 const app = express();
@@ -108,11 +108,10 @@ app.use(notFound);
 
 app.use(errorHandler);
 
-const PORT = 5000;
 
 app.listen(
-  PORT,
+  port,
   console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+    `Server running in ${process.env.NODE_ENV} mode on port ${port}`.yellow.bold
   )
 );
