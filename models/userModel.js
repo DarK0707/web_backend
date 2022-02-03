@@ -1,9 +1,7 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcryptjs'
 
-// Create User schema
 const userSchema = mongoose.Schema({
-    // Fields for user
     name: {
         type: String,
         required: true,
@@ -29,9 +27,6 @@ userSchema.methods.matchPassword = async function(enteredPassword){
     return await bcrypt.compare(enteredPassword, this.password)
 }
 
-// Hashing middleware
-// pred ulozenim zasifruj password
-// vykona sa ked zavolame create
 userSchema.pre('save', async function(next){
     if (!this.isModified('password')){
         next()

@@ -11,9 +11,7 @@ const reviewSchema = mongoose.Schema({
     },
 }, {timestamps: true})
 
-// Create Product schema
 const productSchema = mongoose.Schema({
-    // relation between product and user
     user:{
         type: mongoose.Schema.Types.ObjectId,
         required: true,

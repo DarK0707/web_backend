@@ -2,8 +2,6 @@ import express from 'express'
 const router = express.Router()
 import { addOrderItems, getOrderById, updateOrderToPaid, updateOrderToDelivered, getMyOrders, getOrders } from '../controllers/orderController.js'
 import { protect, admin } from '../middleware/authMiddleware.js'
-
-// /api/orders je tam kde to volame
 router.route('/')
     .post(protect, addOrderItems)
     .get(protect, admin, getOrders)

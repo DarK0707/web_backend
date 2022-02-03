@@ -15,7 +15,6 @@ const storage = multer.diskStorage({
 
 function checkFileType(file, cb){
     const filetypes = /jpg|jpeg|png/
-    // obe true or false, ci to patri do filetypes
     const extname = filetypes.test(path.extname(file.originalname.toLowerCase()))
     const mimetype = filetypes.test(file.mimetype)
 
@@ -28,14 +27,12 @@ function checkFileType(file, cb){
 
 const upload = multer({
     storage, 
-    // kontrola typu suborov - chceme uploadovat len .jpg, .png
     fileFilter: function(req, file, cb){
         checkFileType(file, cb)
     }
 })
 
-// connect to /api/upload
-router.post('/', upload.single('image'), (req, res) =>{ // mozme i multiple
+router.post('/', upload.single('image'), (req, res) =>{ 
     res.send(`\\${req.file.path}`)
 } )  
 
