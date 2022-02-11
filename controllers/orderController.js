@@ -7,7 +7,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
   if (orderItems && orderItems.length === 0) {
     res.status(400)
-    throw new Error('No order items')
+    throw new Error('Sipariş öğesi yok')
     return
   } else {
     
@@ -37,7 +37,7 @@ const getOrderById = asyncHandler(async (req, res) => {
     res.json(order)
   } else {
     res.status(404)
-    throw new Error('Order not found')
+    throw new Error('Sipariş Bulunamadı')
   }
 })
 
@@ -60,7 +60,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 
   } else {
     res.status(404)
-    throw new Error('Order not found')
+    throw new Error('Sipariş Bulunamadı')
   }
 })
 
@@ -77,7 +77,7 @@ const updateOrderToDelivered = asyncHandler(async (req, res) => {
 
   } else {
     res.status(404)
-    throw new Error('Order not found')
+    throw new Error('Sipariş Bulunamadı')
   }
 })
 
