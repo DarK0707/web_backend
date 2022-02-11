@@ -17,7 +17,7 @@ const authUser = asyncHandler(async (req, res) => {
         })
     } else {
         res.status(401)
-        throw new Error('Invalid email or password')
+        throw new Error('Geçersiz email veya şifre')
     }
 })
 
@@ -28,7 +28,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
     if (userExist) {
         res.status(400)
-        throw new Error('User already exists')
+        throw new Error('Kullanıcı zaten var')
     }
 
     const user = await User.create({
@@ -45,7 +45,7 @@ const registerUser = asyncHandler(async (req, res) => {
         })
     } else {
         res.status(400)
-        throw new Error('Invalid user data')
+        throw new Error('Geçersiz kullanıcı verisi')
     }
 })
 
@@ -60,7 +60,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
         })
     } else {
         res.status(404)
-        throw new Error('User not found')
+        throw new Error('Kullanıcı bulunamadı')
     }
 })
 
@@ -85,7 +85,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
     } else {
         res.status(404)
-        throw new Error('User not found')
+        throw new Error('Kullanıcı bulunamadı')
     }
 })
 
@@ -98,10 +98,10 @@ const deleteUser = asyncHandler(async (req, res) => {
     const user = await User.findById(req.params.id)
     if (user) {
         await user.remove()
-        res.json({ message: 'User removed' })
+        res.json({ message: 'Kullanıcı kaldırıldı' })
     } else {
         res.status(404)
-        throw new Error('User not found')
+        throw new Error('Kullanıcı bulunamadı')
     }
 })
 
@@ -111,7 +111,7 @@ const getUserById = asyncHandler(async (req, res) => {
         res.json(user)
     } else {
         res.status(404)
-        throw new Error('User not found')
+        throw new Error('Kullanıcı bulunamadı')
     }
 })
 
@@ -133,7 +133,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
     } else {
         res.status(404)
-        throw new Error('User not found')
+        throw new Error('Kullanıcı bulunamadı')
     }
 })
 
