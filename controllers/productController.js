@@ -29,7 +29,7 @@ const getProductById = asyncHandler(async (req, res) => {
     res.json(product);
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error("Ürün Bulunamadı");
   }
 });
 
@@ -37,21 +37,21 @@ const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (product) {
     await product.remove();
-    res.json({ message: "Product removed" });
+    res.json({ message: "Ürün Kaldırıldı" });
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error("Ürün Bulunamadı");
   }
 });
 
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
-    name: "Sample name",
+    name: "Örnek İsim ",
     price: 0,
     user: req.user._id,
-    image: "/images/sample.jpg",
+    image: "/images/ornek.jpg",
     brand: "Örnek Marka",
-    category: " Sample category",
+    category: " Örnek Kategori",
     countInStock: 0,
     numReviews: 0,
     description: "Örnek Açıklama",
@@ -81,7 +81,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     res.json(updatedProduct);
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error("Ürün Bulunamadı");
   }
 });
 
@@ -96,7 +96,7 @@ const createProductReview = asyncHandler(async (req, res) => {
     );
     if (alreadyReviewed) {
       res.status(400);
-      throw new Error("Product already reviewed");
+      throw new Error("Ürün zaten incelendi");
     }
 
     const review = {
@@ -114,10 +114,10 @@ const createProductReview = asyncHandler(async (req, res) => {
       product.reviews.length;
 
     await product.save();
-    res.status(201).json({ message: "Review added" });
+    res.status(201).json({ message: "İnceleme Eklendi" });
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error("Ürün Bulunamadı");
   }
 });
 
