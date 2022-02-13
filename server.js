@@ -9,7 +9,7 @@ import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
-import Contact from "./models/contactModel.js";
+import Contanct from "./models/contactModel.js";
 import asyncHandler from "express-async-handler";
 import Feedback from "./models/feedback.js";
 dotenv.config();
@@ -32,24 +32,24 @@ app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoutes);
 app.post(
-  "/api/contact",
+  "/api/contant",
   asyncHandler(async (req, res) => {
-    const { name, email, contacttype, message } = req.body;
+    const { name, email, contanttype, message } = req.body;
 
-    const contact = await Contact.create({
+    const contant = await Contanct.create({
       name,
       email,
-      contacttype,
+      contanttype,
       message,
     });
 
     if (contact) {
       res.status(201).json({
-        _id: contact._id,
-        name: contact.name,
-        email: contact.email,
-        contacttype: contact.contacttype,
-        message: contact.message,
+        _id: contant._id,
+        name: contant.name,
+        email: contant.email,
+        contanttype: contant.contanttype,
+        message: contant.message,
       });
     } else {
       res.status(400);
