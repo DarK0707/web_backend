@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-const contanctSchema = mongoose.Schema(
+const contactSchema = mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
     },
-    contanttype: {
+    contacttype: {
       type: String,
       required: true,
     },
@@ -21,6 +21,6 @@ const contanctSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
-const Contanct = mongoose.model('Contanct', contanctSchema)
+const Contact = mongoose.model('Contact', contactSchema)
 
-export default Contanct
+export default Contact
